@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <---<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <h1>
+            Backtracing
+        </h1>
+        <p style="font-family:Arial Narrow">Backtracking is a form of recursion 
+            <br><br> The usual scenario is that you are faced with a number of options, and you must choose one of these. After you make your
+            choice you will get a new set of options; just what set of options you get depends on what choice you made, This procedure is
+            repeated over and over until you reach a final state. If you made a good sequence of choices, your final state is a goal state; if
+            you didn't, it isn't, 
+            <br><br> Conceptually, you start at the root of a tree; the tree probably has some good leaves and some bad leaves, though it may be that
+            the leaves are all good or all bad. You want to get to a good leaf, At each node, beginning with the root, you choose one of its
+            children to move to, and you keep this up until you get to a leaf. 
+            <br><br> Suppose you get to a bad leaf. You can backtrack to continue the search for a good leaf by revoking your most recent choice,
+            and trying out the next option in that set of options. If you run out of options, revoke the choice that got you here, and try
+            another choice at that node. If you end up at the root with no options left, there are no good leaves to be found. 
+            <br><br> This needs an example.
+            </p>
+        <img src="./binery tree.png" alt="Italian Trulli">
+        <ol style="font-family:Arial Narrow">
+            <li>Starting at Root, your options are A and B. You choose A.</li>
+            <li>At A, your options are C and D. You choose C.</li>
+            <li> Cis bad. Go back to A.</li>
+            <li>At A, you have already tried C, and it failed. Try D.</li>
+            <li>Dis bad. Go back to A</li>
+            <li>At A, you have no options left to try. Go back to Root,</li>
+            <li>At Root, you have already tried A. Try B.</li>
+            <li>ACB, your options are E and F. Try E.</li>
+            <li> E is good. Congratulations!</li>
+        </ol>
+        <pre style="font-family:Arial Narrow" >
+            In this example we drew a picture of a tree. The tree is an abstract model of the possible sequences of choices we could
+            make. There is also a data structure called a tree, but usually we don't have a data structure to tell us what choices we
+            have. (If we do have an actual tree data structure, backtracking on it is called depth-first tree searching.)
+        </pre>
+        <hr>
+        <h3>
+            The backtracking algorithm.
+        </h3>
+        <pre>
+            boolean solve(Node n) {
+
+                if nis a leaf node {
+                if the leaf is a goal node, return true
+                else return false
+                
+                yelse {
+                for each child ¢ of n{
+                
+                if solve(c) succeeds, return true
+                }
+                return false
+                
+                )
+        </pre>
+        <Pre>
+            Notice that the algorithm is expressed as a boolean function. This is essential to understanding the algorithm. If
+            solve(n) is true, that means node n is part of a solution--that is, node n is one of the nodes on a path from the root to
+            some goal node. We say that n is solvable. If solve(n) is false, then there is no path that includes n to any goal node.
+        </Pre>
+        <h4>
+            How does this work?
+        </h4>
+        <ul>
+            <LI>If any child of n is solvable, then n is solvable.</LI>
+            <LI>If no child of n is solvable, then n is not solvable.</LI>
+        </ul>
+        <br>
+        <p>
+            Hence, to decide whether any non-leaf node n is solvable (part of a path to a goal node), all you have to do is test whether any
+            Child of nis solvable. This is done recursively, on each child of n. In the above code, this is done by the lines
+        </p>
+        <pre>
+            for each child c of n{
+                if solve(c) succeeds, return true
+                
+                )
+                return false
+        </pre>
+        <p>
+            Eventually the recursion will “bottom” out at a leaf node. If the leaf node is a goal node, it is solvable; if the leaf node is not a goal
+            node, it is not solvable. This is our base case. In the above code, this is done by the lines
+        </p>
+        <pre>
+            if nis a leaf node {
+                if the leaf is a goal node, return true
+                else return false
+                
+                }
+        </pre>
+        <br>
+        <P>
+
+        </P>
+        <br>
+        <ul>
+            <li><h3>To search a tree</h3></li>
+        </ul>
+        
+        <script src="" async defer></script>
+    </body>
+</html>
+
